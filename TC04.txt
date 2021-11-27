@@ -1,0 +1,39 @@
+package selectClass;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import configuration.PathConfiguration;
+
+public class Test1 {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", PathConfiguration.driverPath);
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get(PathConfiguration.appUrl);
+		Thread.sleep(2000);
+
+		// Year
+		WebElement year = driver.findElement(By.xpath("//select[@id='year']"));
+
+		Select s = new Select(year);
+
+		List<WebElement> opt = s.getOptions();
+		System.out.println("No of Years in drop down: " + opt.size());
+
+		// days
+		WebElement day = driver.findElement(By.xpath("//select[@id='day']"));
+
+		Select d = new Select(day);
+
+		List<WebElement> opt1 = d.getOptions();
+		System.out.println("No of days in drop down: " + opt1.size());
+
+	}
+
